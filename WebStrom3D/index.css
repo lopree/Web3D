@@ -1,0 +1,28 @@
+text {
+    font: bold 20px monospace;
+}
+
+.enter {
+    text-align: left;
+    fill: green;
+}
+
+.update {
+    text-anchor: middle;
+    fill: #333;
+}
+.svg-main{
+    top: 10%;
+    left: 5%;
+    border:2px solid #ccc;
+    background: aliceblue;
+    position: absolute;
+}
+.TextSVG{
+    top: 50%;
+    left: 5%;
+    border:2px solid #ccc;
+    background: aliceblue;
+    position: absolute;
+}
+
