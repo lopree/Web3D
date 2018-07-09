@@ -25,4 +25,10 @@ text {
     background: aliceblue;
     position: absolute;
 }
+.importSVG{
+    top: 60%;
+    left: 5%;
+    position:absolute;
+}
+
 
