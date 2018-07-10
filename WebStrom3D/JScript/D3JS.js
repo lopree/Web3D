@@ -1,3 +1,4 @@
+//数据更新的例子（文字）
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 var data02 = ["鱼香肉丝","地三鲜","龙井虾仁","锅包肉","糖醋里脊","西湖醋鱼","叫花鸡","即墨老酒"];
 var svg = d3.select('body').append('div').append('svg').attr("width",300).attr("height",100)

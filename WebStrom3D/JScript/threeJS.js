@@ -1,3 +1,4 @@
+//简单的3D场景
 var scene = new THREE.Scene();
 
 var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
