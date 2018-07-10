@@ -8,6 +8,7 @@ var width = +svg.attr("width"),
     g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");
 var g2 = svg.append('g')
             .attr("transform", "translate("+(width/2)+"," + (height / 2) + ")")
+    .attr("id","node00")
             .append("text");
 function update(data,date) {
 
