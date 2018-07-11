@@ -1,16 +1,40 @@
-//测试用D3.js文件
+// 测试用D3.js文件
 // d3 V5版本使用此xml的方式引入外部创建的SVG文件，以及可获取到其中的属性：
-d3.xml("./Resources/rect01.svg")
-    .then(xml => {
-        this.document.body.appendChild(xml.documentElement);
-    });
-
-var nodelist = d3.select("#node00").nodes();
-var allParentNode = nodelist.;
-// var newG = d3.select(nodeParent[0]).attr("transform","translate(500,500)");
+var aa = d3.select("body").select('div').nodes();
+// d3.xml("http://115.28.5.204:7004/SanD/svg/svg1.svg")
+//     .then(xml => {
+//         this.aa[0].appendChild(xml.documentElement);
+//         d3.select("body").select('#svg1').attr("class", "importSVG");
+//     });
+var newSVG = await d3.xml();
+console.log(newSVG);
+// 查找指定id节点的直属父节点
+var allnode = d3.select("body").selectAll('svg').nodes();
+console.log(allnode);
+var node_id = d3.select("#node00");
+console.log(node_id);
+var nodelist = d3.selectAll("#node00").nodes();
 console.log(nodelist);
-console.log(allParentNode);
+var direct_ParentNode = nodelist.map(function (d) {
+    return d.parentNode;
+});
+console.log(direct_ParentNode);
+// 查找指定id节点的所有父节点
+var all_parents = function (node, candidates) {
+    var candidate,
+        results,
+        i,
+        ilength;
+    results = [];
+    for (i = 0, ilength = candidates.length; i < ilength; i++) {
+        candidate = candidates[i];
+        if (candidate.contains(node[0])) {
+            results.push(candidate);
+        }
+    }
+    return results;
+};
 
-var findidParent = d3.select("#test01").nodes().map(function(d){return d.parentNode;});
-var newTestSVG = d3.select(findidParent[0]).attr("class","importSVG");
+var all_parentsNode = all_parents(nodelist, allnode);
 
+console.log(all_parentsNode);
