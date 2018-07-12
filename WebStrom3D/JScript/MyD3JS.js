@@ -16,10 +16,6 @@ d3.xml(url).then(xml=>{
 })
 
 
-console.log(newsvg);
-
-
-
 // 查找指定id节点的直属父节点
 var allnode = d3.select("body").selectAll('svg').nodes();
 console.log(allnode);
