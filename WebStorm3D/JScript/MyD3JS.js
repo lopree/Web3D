@@ -1,20 +1,16 @@
 /*jshint esversion: 6 */
 // 异步加载文件
 // d3 V5版本使用xml的方式引入外部创建的SVG文件，以及可获取到其中的属性：
-var aa = d3.select("body").select('div').nodes();
+
 // 异步函数调用
 // 通过 .then 形式添加的回调函数，甚至都在异步操作完成之后才被添加的函数，都会被调用
-// d3.xml("http://115.28.5.204:7004/SanD/svg/svg1.svg");
-// then(xml => {
-//     this.aa[0].appendChild(xml.documentElement);
-//     d3.select("body").select('#svg1').attr("class", "importSVG");
-// });
 
+var aa = d3.select(document.body).select('div').nodes();
 let url = "http://115.28.5.204:7004/SanD/svg/svg1.svg";
 d3.xml(url).then(xml=>{
     this.aa[0].appendChild(xml.documentElement);
-    d3.select("body").select('#svg1').attr("class", "importSVG");
-})
+    d3.select('#svg1').attr("class", "importSVG");
+});
 
 
 // 查找指定id节点的直属父节点
