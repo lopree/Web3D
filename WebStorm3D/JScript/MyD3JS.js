@@ -9,23 +9,25 @@ var aa = d3.select(document.body).select('div').nodes();
 let url = "http://115.28.5.204:7004/SanD/svg/svg1.svg";
 d3.xml(url).then(xml=>{
     this.aa[0].appendChild(xml.documentElement);
+    //将查询等操作导入的SVG语句和创建svg的语句同时放入then()，就可以操作SVG；但是对动态数据的展示不太友好
     d3.select('#svg1').attr("class", "importSVG");
 });
 
+//下面的所有语句将和上面创建SVG的语句同时执行，因此下面的查询导入的svg时返回一个空的array，也就是所有对导入
+//的SVG的操作聚在创建SVG之前，也就是会得到一个空的Array
+var importSVG01 = d3.select("#svg1").nodes();
+console.log(importSVG01);
 
-// 查找指定id节点的直属父节点
+// 选取所有svg
 var allnode = d3.select("body").selectAll('svg').nodes();
-console.log(allnode);
-var node_id = d3.select("#node00");
-console.log(node_id);
+//选取所有id=node00的元素，返回一个list
 var nodelist = d3.selectAll("#node00").nodes();
-console.log(nodelist);
+//查找列表中每个元素的直属上级
 var direct_ParentNode = nodelist.map(function (d) {
     return d.parentNode;
 });
-console.log(direct_ParentNode);
-// 查找指定id节点的所有父节点
-var all_parents = function (node, candidates) {
+//判断第二个参数中的元素是否是第一个元素的祖先
+var Isparents = function (node, candidates) {
     var candidate,
         results,
         i,
@@ -40,7 +42,7 @@ var all_parents = function (node, candidates) {
     return results;
 };
 
-var all_parentsNode = all_parents(nodelist, allnode);
+var is_parentsNode = Isparents(nodelist, allnode);
 
-console.log(all_parentsNode);
+console.log(is_parentsNode);
 
