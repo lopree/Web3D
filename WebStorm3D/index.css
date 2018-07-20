@@ -30,5 +30,12 @@ text {
     left: 5%;
     position:absolute;
 }
+.TabelSVG{
+    top: 10%;
+    right: 5%;
+    left: 71%;
+    border: 1px solid black;
+    position: absolute;
+}
 
 

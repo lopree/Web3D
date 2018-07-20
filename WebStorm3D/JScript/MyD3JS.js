@@ -16,7 +16,7 @@ d3.xml(url).then(xml=>{
 //下面的所有语句将和上面创建SVG的语句同时执行，因此下面的查询导入的svg时返回一个空的array，也就是所有对导入
 //的SVG的操作聚在创建SVG之前，也就是会得到一个空的Array
 var importSVG01 = d3.select("#svg1").nodes();
-console.log(importSVG01);
+//console.log(importSVG01);
 
 // 选取所有svg
 var allnode = d3.select("body").selectAll('svg').nodes();
@@ -44,5 +44,5 @@ var Isparents = function (node, candidates) {
 
 var is_parentsNode = Isparents(nodelist, allnode);
 
-console.log(is_parentsNode);
+//console.log(is_parentsNode);
 

@@ -28,7 +28,7 @@ async function CreatSVG(svgAdd) {
     var nodelist = d3.select("#canvasGrid").nodes();
 
     all_Parents(nodelist[0]);
-
+console.log(d3.ancestors(nodelist[0]));
     console.log(result);
     return newSVG;
 
@@ -36,10 +36,17 @@ async function CreatSVG(svgAdd) {
 
 function all_Parents(dom) {
     if (dom) {
-        result.push(dom.parentNode);
-        all_Parents(dom.parentNode);
+
+        //判断节点名字，如果已经打了最上面--也就是document,就直接返回父物体的结果
+        if (dom.nodeName == "#document") {
+
+            return result;
+        }else{
+            result.push(dom.parentNode);
+            all_Parents(dom.parentNode);
+        }
     } else {
-        console.log("end");
+        console.log("dom is null,please check");
     }
 }
 
