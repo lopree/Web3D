@@ -21,6 +21,7 @@ var TabelCanvas = d3.select(document.body).select('div').append("svg")
     .attr("class","TabelSVG");
 //绘制坐标轴
 var Axis = TabelCanvas.append('g').attr("transform","translate(10,360)");
+//设定比例尺
 //domain()坐标刻度数量，对应后面的像素点，即0-->8px,10-->378px,刻度间距为(378-8)/10
 var xAxisScale = d3.scaleLinear().domain([0,10]).range([8,378]);
 
@@ -28,5 +29,5 @@ var xAxisScale = d3.scaleLinear().domain([0,10]).range([8,378]);
 var xAxis = d3.axisBottom().scale(xAxisScale);
 
 //
-xAxis(Axis);
+Axis.call(xAxis);
 
