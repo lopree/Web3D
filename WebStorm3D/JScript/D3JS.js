@@ -2,8 +2,11 @@
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 var data02 = ["鱼香肉丝", "地三鲜", "龙井虾仁", "锅包肉", "糖醋里脊", "西湖醋鱼", "叫花鸡", "即墨老酒"];
 var CreatedDiv = d3.select('body').append('div');
-var svg = CreatedDiv.append('svg').attr("width", 300).attr("height", 100)
-    .style("border", "green solid").attr("class", "svg-main");
+var svg = CreatedDiv.append('svg')
+    .style("border", "green solid").attr("class", "svg-main")
+    .attr("width",300).attr("height",100)
+    .attr("viewBox","0 0 300 100");
+
 var width = +svg.attr("width"),
     height = +svg.attr("height"),
     g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");

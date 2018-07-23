@@ -6,10 +6,14 @@ var newDataArr = [50, 20, 30, 40, 50, 60, 70, 80];
 //1.绘制静态图表
 var TWidth = 400, THeight = 400;
 //在index.html中次脚本的引用晚于MyD3JS.js,因此可以获取到那个脚本中创建的div
-var TableCanvas = d3.select(document.body).select('div').append("svg")
-    .attr("width", TWidth)
-    .attr("height", THeight)
-    .attr("id", "Table01").attr("class", "TableSVG");
+//
+var TableCanvas = d3.select(document.body).append('div').attr("id", "TableDiv")
+    .attr("class", "tablediv")
+    .append("svg")
+    .attr("id", "Table01").attr("class", "TableSVG")
+    // .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 400 400")
+    .attr("width",40).attr("height",40);
 //获得对应CSS文件中的class中的属性---并且该属性可修改（可读可写）
 const table01 = document.getElementById("Table01");
 //返回字符串,转换成float
@@ -31,7 +35,7 @@ var GXAxis = TableCanvas.append('g').attr("transform", "translate(" + Table_padd
 var GYAxis = TableCanvas.append('g').attr("transform", "translate(" + Table_padding + "," + (THeight - Table_padding - yAxisWidth) + ")");
 //生成比例尺
 //domain()坐标刻度数量，对应后面的像素点，即0-->8px,10-->378px,刻度间距为(378-8)/10
-var xScale = d3.scaleBand().domain(newDataArr.map((d, i) => i)).range([0, xAxisWidth]).padding(0.1);
+var xScale = d3.scaleBand().domain(newDataArr.map((d, i) => i + 1)).range([0, xAxisWidth]).padding(0.1);
 var yScale = d3.scaleLinear().domain([0, d3.max(newDataArr)]).rangeRound([yAxisWidth, 0]);
 
 
@@ -46,23 +50,23 @@ GYAxis.call(yAxis);
 const RectStyle = obj => {
     obj.attr("fill", "blue")
         .attr("x", (d, i) => {
-            return Table_padding + xScale(i)
+            return Table_padding + xScale(i + 1)
         })
         .attr("y", (d, i) => {
-            return THeight - Table_padding - (yScale(0)-yScale(d))
+            return THeight - Table_padding - (yScale(0) - yScale(d))
         })
         .attr("width", xScale.bandwidth())
         .attr("height", (d, i) => {
-            return yScale(0)-yScale(d)
+            return yScale(0) - yScale(d)
         });
 };
 const TextStyle = obj => {
     obj.attr("class", "DataText")
         .attr("x", (d, i) => {
-            return Table_padding + xScale(i)
+            return Table_padding + xScale(i + 1)
         })
         .attr("y", (d, i) => {
-            return THeight - Table_padding - (yScale(0)-yScale(d))
+            return THeight - Table_padding - (yScale(0) - yScale(d))
         })
         .text((d, i) => {
             return d
