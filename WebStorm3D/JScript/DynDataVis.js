@@ -3,17 +3,20 @@
 //动态时由服务器提供
 var dataset = [50, 32, 23, 6, 89, 123, 60];
 var newDataArr = [50, 20, 30, 40, 50, 60, 70, 80];
-//1.绘制静态图表
-var TWidth = 400, THeight = 400;
+//绘制圆形比例图
+//饼图的默认数据
+var pData = [12,13,22];
+//根据鼠标的位置，动态更新饼图的数据源
+var nowPData = [];
+//颜色
+var pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+//1.绘制静态直方图图表
+const Width = 800,Height = 400;
+const TWidth = 400, THeight = 400;
 //在index.html中次脚本的引用晚于MyD3JS.js,因此可以获取到那个脚本中创建的div
-//
-var TableCanvas = d3.select(document.body).append('div').attr("id", "TableDiv")
-    .attr("class", "tablediv")
-    .append("svg")
-    .attr("id", "Table01").attr("class", "TableSVG")
-    // .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 400 400")
-    .attr("width",40).attr("height",40);
+var TableCanvas = d3.select(document.body).select("div")
+    .append("svg").attr("id","Table01").attr("class","TableSVG")
+    .attr("width", Width).attr("height",Height);
 //获得对应CSS文件中的class中的属性---并且该属性可修改（可读可写）
 const table01 = document.getElementById("Table01");
 //返回字符串,转换成float
@@ -48,7 +51,7 @@ GYAxis.call(yAxis);
 
 //数据初始化及更新(伪)
 const RectStyle = obj => {
-    obj.attr("fill", "blue")
+    obj.attr("fill", "steelblue")
         .attr("x", (d, i) => {
             return Table_padding + xScale(i + 1)
         })
@@ -58,7 +61,9 @@ const RectStyle = obj => {
         .attr("width", xScale.bandwidth())
         .attr("height", (d, i) => {
             return yScale(0) - yScale(d)
-        });
+        })
+        .on('mouseover',mouseover)
+        .on('mouseout',mouseout);
 };
 const TextStyle = obj => {
     obj.attr("class", "DataText")
@@ -97,6 +102,17 @@ function update_Table(newDataSource) {
         TextStyle(newTable.enter().append("text"));
     }
 
+}
+//饼图
+function init_pTable(dataSource){
+
+}
+//鼠标移入移出时触发的事件
+function mouseover(){
+    d3.select(this).attr('fill','blue')
+}
+function mouseout(){
+    d3.select(this).attr('fill','steelblue')
 }
 
 init_Table(dataset);
