@@ -3,11 +3,26 @@
 //动态时由服务器提供
 var dataset = [50, 32, 23, 6, 89, 123, 60];
 var newDataArr = [50, 20, 30, 40, 50, 60, 70, 80];
-//绘制圆形比例图
-//饼图的默认数据
-var pData = [12,13,22];
+//饼图的数据
+const pData = [12,13,17];
+var freqData=[
+    {State:'AL',freq:{low:4786, mid:1319, high:249}}
+    ,{State:'AZ',freq:{low:1101, mid:412, high:674}}
+    ,{State:'CT',freq:{low:932, mid:2149, high:418}}
+    ,{State:'DE',freq:{low:832, mid:1152, high:1862}}
+    ,{State:'FL',freq:{low:4481, mid:3304, high:948}}
+    ,{State:'GA',freq:{low:1619, mid:167, high:1063}}
+    ,{State:'IA',freq:{low:1819, mid:247, high:1203}}
+    ,{State:'IL',freq:{low:4498, mid:3852, high:942}}
+    ,{State:'IN',freq:{low:797, mid:1849, high:1534}}
+    ,{State:'KS',freq:{low:162, mid:379, high:471}}
+];
+//绘制圆形比例图SVG以及里面的弦
+const PTableCanvas = d3.select('div').append('svg').attr('id','pTableSVG')
+    .attr("width",200).attr('height',200);
+const arcPath =d3.arc().innerRadius(0).outerRadius(100);
 //根据鼠标的位置，动态更新饼图的数据源
-var nowPData = [];
+
 //颜色
 var pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 //1.绘制静态直方图图表
@@ -104,8 +119,14 @@ function update_Table(newDataSource) {
 
 }
 //饼图
+const pStyle = obj=>{
+    obj.attr("transform","translate("+Width*3/4+","+Height/2+")").attr('stroke','#000')
+        .attr('stroke-width','3px');
+}
 function init_pTable(dataSource){
-
+pStyle(PTableCanvas.selectAll('path').data(dataSource).enter().append('path')
+    .attr('d',d=>arcPath(d)).attr('fill','green')
+)
 }
 //鼠标移入移出时触发的事件
 function mouseover(){
@@ -118,6 +139,7 @@ function mouseout(){
 init_Table(dataset);
 
 update_Table(newDataArr);
+init_pTable(pData);
 
 
 
