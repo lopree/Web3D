@@ -1,15 +1,15 @@
 //数据更新的例子（文字）
-var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-var data02 = ["鱼香肉丝", "地三鲜", "龙井虾仁", "锅包肉", "糖醋里脊", "西湖醋鱼", "叫花鸡", "即墨老酒"];
-var CreatedDiv = d3.select('body').append('div').attr('class','svg-rooter');
-var svg = CreatedDiv.append('svg')
+const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+let data02 = ["鱼香肉丝", "地三鲜", "龙井虾仁", "锅包肉", "糖醋里脊", "西湖醋鱼", "叫花鸡", "即墨老酒"];
+const CreatedDiv = d3.select('body').append('div').attr('class', 'svg-rooter');
+const svg = CreatedDiv.append('svg')
     .style("border", "green solid").attr("class", "svg-main")
-    .attr("width",300).attr("height",100)
-    .attr("viewBox","0 0 300 100");
-var width = +svg.attr("width"),
+    .attr("width", 300).attr("height", 100)
+    .attr("viewBox", "0 0 300 100");
+const width = +svg.attr("width"),
     height = +svg.attr("height"),
     g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");
-var g2 = svg.append('g')
+const g2 = svg.append('g')
     .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")")
     .attr("id", "node00")
     .append("text");
@@ -18,10 +18,10 @@ function update(data, date) {
 
     // DATA JOIN
     // Join new data with old elements, if any.
-    var text = g.selectAll("text")
+    const text = g.selectAll("text")
         .data(data);
 
-    var text02 = g2.data(date);
+    const text02 = g2.data(date);
 
     // UPDATE
     // Update old elements as needed.

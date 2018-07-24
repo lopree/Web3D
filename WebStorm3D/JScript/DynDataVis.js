@@ -17,14 +17,9 @@ var freqData=[
     ,{State:'IN',freq:{low:797, mid:1849, high:1534}}
     ,{State:'KS',freq:{low:162, mid:379, high:471}}
 ];
-//绘制圆形比例图SVG以及里面的弦
-const PTableCanvas = d3.select('div').append('svg').attr('id','pTableSVG')
-    .attr("width",200).attr('height',200);
-const arcPath =d3.arc().innerRadius(0).outerRadius(100);
-//根据鼠标的位置，动态更新饼图的数据源
+console.log(freqData);
+//const pnewData = freqData.each(function(d){d.total = d.freq.high + d.freq.low+d.freq.mid});
 
-//颜色
-var pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 //1.绘制静态直方图图表
 const Width = 800,Height = 400;
 const TWidth = 400, THeight = 400;
@@ -32,6 +27,15 @@ const TWidth = 400, THeight = 400;
 var TableCanvas = d3.select(document.body).select("div")
     .append("svg").attr("id","Table01").attr("class","TableSVG")
     .attr("width", Width).attr("height",Height);
+//绘制圆形比例图SVG以及里面的弦
+const pie = d3.pie().value(d=>d);
+const pieData = pie(pData);
+console.log(pieData);
+const arcPath =d3.arc().innerRadius(0).outerRadius(100);
+//根据鼠标的位置，动态更新饼图的数据源
+
+//颜色
+var pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 //获得对应CSS文件中的class中的属性---并且该属性可修改（可读可写）
 const table01 = document.getElementById("Table01");
 //返回字符串,转换成float
@@ -120,17 +124,22 @@ function update_Table(newDataSource) {
 }
 //饼图
 const pStyle = obj=>{
-    obj.attr("transform","translate("+Width*3/4+","+Height/2+")").attr('stroke','#000')
-        .attr('stroke-width','3px');
+    obj.attr('stroke','#000')
+        .attr('stroke-width','1px')
+        .attr("transform","translate("+500+","+(Height/2)+")")
+        .attr('d',d=>arcPath(d)).attr('fill',(d,i)=>pColor(i)).attr('class','pTableStyle');
 }
 function init_pTable(dataSource){
-pStyle(PTableCanvas.selectAll('path').data(dataSource).enter().append('path')
-    .attr('d',d=>arcPath(d)).attr('fill','green')
-)
+    pStyle(TableCanvas.selectAll(".pTableStyle").data(dataSource).enter().append('path'));
+}
+function updata_pTable(dataSource) {
+    pStyle(TableCanvas.selectAll(".pTableStyle").data(dataSource))
 }
 //鼠标移入移出时触发的事件
 function mouseover(){
-    d3.select(this).attr('fill','blue')
+    d3.select(this).attr('fill','blue');
+
+    //updata_pTable()
 }
 function mouseout(){
     d3.select(this).attr('fill','steelblue')
@@ -139,7 +148,7 @@ function mouseout(){
 init_Table(dataset);
 
 update_Table(newDataArr);
-init_pTable(pData);
+init_pTable(pieData);
 
 
 
