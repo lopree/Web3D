@@ -11,44 +11,40 @@ text {
     text-anchor: middle;
     fill: #333;
 }
-
-.svg-main_rooter {
+.svg-rooter{
+    top: 0;
+    left: 0;
+    height:100%;
+    width:100%;
     position: absolute;
-    width: 100%;
-    padding-bottom: 100%;
 }
-
-.svg-main {
+.svg-main{
     top: 10%;
-    left: 2px;
-    border: 2px solid #ccc;
+    left: 5%;
+    border:2px solid #ccc;
     background: aliceblue;
     position: absolute;
 }
-
-.TextSVG {
+.TextSVG{
     top: 50%;
     left: 5%;
-    border: 2px solid #ccc;
+    border:2px solid #ccc;
     background: aliceblue;
     position: absolute;
 }
-
-.importSVG {
+.importSVG{
     top: 60%;
     left: 5%;
-    position: absolute;
+    position:absolute;
 }
-
-.TableSVG {
+.TableSVG{
     top: 0;
     right: 0;
     padding: 20px;
     border: 1px solid black;
     position: absolute;
 }
-
-.DataText {
+.DataText{
     fill: white;
     text-anchor: middle;
     font-size: 20px;
