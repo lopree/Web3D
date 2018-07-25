@@ -1,8 +1,6 @@
 //动态数据表格展示
 //静态数据源--直方图示例
 //动态时由服务器提供
-var dataset = [50, 32, 23, 6, 89, 123, 60];
-var newDataArr = [50, 20, 30, 40, 50, 60, 70, 80];
 //饼图的数据
 const pData = [12, 13, 17];
 var freqData = [
@@ -71,6 +69,7 @@ GYAxis.call(yAxis).selectAll('text').attr('class', 'yAxisText');
 
 const RectStyle = obj => {
     obj.attr("fill", "steelblue")
+        .attr('id','TableRect')
         .attr("x", (d, i) => {
             return Table_padding + xScale(i + 1)
         })
@@ -169,25 +168,42 @@ function updata_pTable(newdataSource) {
 
 //鼠标移入移出直方图时触发的事件
 function mouseover(d,i) {
-    d3.select(this).attr('fill', 'blue');
-    //更新饼状图数据
-    const newpData = fre[i];
-    console.log(newpData);
-    updata_pTable(newpData);
-    //
-console.log(i);
+    if (this.id == 'TableRect') {
+        d3.select(this).attr('fill', 'blue');
+        //更新饼状图数据
+        const newpData = fre[i];
+        console.log(newpData);
+        updata_pTable(newpData);
+    }
+    if (this.nodeName == 'path'){
+        if (i == 0){
+            update_Table(highValue);
+            d3.selectAll('.TableRect').attr('fill',pColor(i));
+        }else if( i == 1){
+            update_Table(midValue);
+            d3.selectAll('.TableRect').attr('fill',pColor(i));
+        }else{
+            update_Table(lowValue);
+            d3.selectAll('.TableRect').attr('fill',pColor(i));
+        }
+    }
 }
 
 function mouseout() {
-    d3.select(this).attr('fill', 'steelblue')
-    init_pTable(pData);
-    //重置饼状图数据
+    if (this.nodeName == 'rect'){
+        d3.select(this).attr('fill', 'steelblue');
+    }
+    if (this.nodeName == 'path'){
+        console.log(11111);
+        //重置所有数据
+        updata_pTable(pData);
+        update_Table(pDATAArray);
+    }
+
 }
 
 //鼠标移入移出饼图时触发的事件
-
 init_Table(pDATAArray);
-
 //update_Table(newDataArr);
 init_pTable(pData);
 
