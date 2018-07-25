@@ -2,7 +2,7 @@
 //静态数据源--直方图示例
 //动态时由服务器提供
 //饼图的数据
-const pData = [12, 13, 17];
+const pData = [20, 13, 17];
 var freqData = [
     {State: 'AL', freq: {low: 4786, mid: 1319, high: 249}}
     , {State: 'AZ', freq: {low: 1101, mid: 412, high: 674}}
@@ -24,6 +24,7 @@ const pDATAArray = [];
 for (i = 0; i < freqData.length; i++) {
     pDATAArray.push(freqData[i].total);
 }
+console.log(pDATAArray);
 //1.绘制静态直方图图表
 const Width = 800, Height = 400;
 const TWidth = 400, THeight = 400;
@@ -69,7 +70,8 @@ GYAxis.call(yAxis).selectAll('text').attr('class', 'yAxisText');
 
 const RectStyle = obj => {
     obj.attr("fill", "steelblue")
-        .attr('id','TableRect')
+        .attr('id','table')
+        .attr('class','TableRect')
         .attr("x", (d, i) => {
             return Table_padding + xScale(i + 1)
         })
@@ -100,20 +102,20 @@ const TextStyle = obj => {
 
 //初始化生成函数
 function init_Table(dataSource) {
-    RectStyle(TableCanvas.selectAll("rect").data(dataSource).enter().append("rect"));
+    RectStyle(TableCanvas.selectAll(".TableRect").data(dataSource).enter().append("rect"));
 
     TextStyle(TableCanvas.selectAll(".DataText").data(dataSource).enter().append("text"));
 }
 
 //更新方法
 function update_Table(newDataSource) {
-    var dataArray = d3.selectAll('rect').nodes();
-    console.log(dataArray.length);
-    var newTable = TableCanvas.selectAll("rect").data(newDataSource);
-    RectStyle(newTable);
+    const dataArray = TableCanvas.selectAll(".TableRect").nodes();
+    const newTable = TableCanvas.selectAll(".TableRect").data(newDataSource);
+
     TextStyle(TableCanvas.selectAll(".DataText").data(newDataSource));
     //当新的数据长度小于原来数据长度，则删除多余的直方；新数据长度多余元数据时，将新的数据添加进去
-    if (newDataSource.length < dataArray.length) {
+    if (newDataSource.length <= dataArray.length) {
+        RectStyle(newTable);
         newTable.exit().remove();
     } else {
         RectStyle(newTable.enter().append('rect'));
@@ -137,14 +139,16 @@ const highValue = fre.map(d => d[2]);
 
 const arcPath = d3.arc().innerRadius(0).outerRadius(100);
 //饼图颜色
-var pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#ab2013", "#76ccc9", "#68cc83"]);
+const pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#ab2013", "#76ccc9", "#68cc83"]);
 
 //饼图
 const pStyle = obj => {
     obj.attr('stroke', '#000')
         .attr('stroke-width', '1px')
         .attr("transform", "translate(" + 500 + "," + (Height / 2) + ")")
-        .attr('d', d => arcPath(d)).attr('fill', (d, i) => pColor(i)).attr('class', 'pTableStyle')
+        .attr('id', 'pTableStyle')
+        .attr('d', d=>arcPath(d))
+        .attr('fill', (d, i) => pColor(i))
         .on('mouseover', mouseover)
         .on('mouseout', mouseout);
 }
@@ -156,11 +160,14 @@ function init_pTable(dataSource) {
 
 function updata_pTable(newdataSource) {
     const newPie = pie(newdataSource);
-    const allPTable = TableCanvas.selectAll(".pTableStyle").nodes();
-    const newpTable = TableCanvas.selectAll(".pTableStyle").data(newPie);
-    if (newPie.length < allPTable.length) {
+    console.log(newPie);
+    const allPTable = TableCanvas.selectAll("#pTableStyle").nodes();
+    const newpTable = TableCanvas.selectAll("#pTableStyle").data(newPie);
+    console.log(newpTable);
+    if (newPie.length <= allPTable.length) {
         pStyle(newpTable);
         newpTable.exit().remove();
+
     } else {
         pStyle(newpTable.enter().append('path'));
     }
@@ -168,21 +175,21 @@ function updata_pTable(newdataSource) {
 
 //鼠标移入移出直方图时触发的事件
 function mouseover(d,i) {
-    if (this.id == 'TableRect') {
+    if (this.id == 'table') {
         d3.select(this).attr('fill', 'blue');
         //更新饼状图数据
         const newpData = fre[i];
         console.log(newpData);
         updata_pTable(newpData);
     }
-    if (this.nodeName == 'path'){
+    if (this.id == 'pTableStyle'){
         if (i == 0){
             update_Table(highValue);
             d3.selectAll('.TableRect').attr('fill',pColor(i));
         }else if( i == 1){
             update_Table(midValue);
             d3.selectAll('.TableRect').attr('fill',pColor(i));
-        }else{
+        }else if(i==2){
             update_Table(lowValue);
             d3.selectAll('.TableRect').attr('fill',pColor(i));
         }
@@ -190,11 +197,10 @@ function mouseover(d,i) {
 }
 
 function mouseout() {
-    if (this.nodeName == 'rect'){
+    if (this.id == 'table'){
         d3.select(this).attr('fill', 'steelblue');
     }
-    if (this.nodeName == 'path'){
-        console.log(11111);
+    if (this.id == 'pTableStyle'){
         //重置所有数据
         updata_pTable(pData);
         update_Table(pDATAArray);
