@@ -44,10 +44,15 @@ text {
     border: 1px solid black;
     position: absolute;
 }
+.yAxisText{
+    fill:red;
+    font-size: 10px;
+    /*transform: rotate(-20deg);*/
+}
 .DataText{
     fill: white;
     text-anchor: middle;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 
