@@ -11,48 +11,89 @@ text {
     text-anchor: middle;
     fill: #333;
 }
-.svg-rooter{
+
+.svg-rooter {
     top: 0;
     left: 0;
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     position: absolute;
 }
-.svg-main{
+
+.svg-main {
     top: 10%;
     left: 5%;
-    border:2px solid #ccc;
+    border: 2px solid #ccc;
     background: aliceblue;
     position: absolute;
 }
-.TextSVG{
+
+.TextSVG {
     top: 50%;
     left: 5%;
-    border:2px solid #ccc;
+    border: 2px solid #ccc;
     background: aliceblue;
     position: absolute;
 }
-.importSVG{
+
+.importSVG {
     top: 60%;
     left: 5%;
-    position:absolute;
+    position: absolute;
 }
-.TableSVG{
+
+.TableSVG {
     top: 0;
     right: 0;
     padding: 20px;
     border: 1px solid black;
     position: absolute;
 }
-.yAxisText{
-    fill:red;
+
+.yAxisText {
+    fill: red;
     font-size: 10px;
     /*transform: rotate(-20deg);*/
 }
-.DataText{
+
+.DataText {
     fill: white;
     text-anchor: middle;
     font-size: 10px;
+}
+
+.legend {
+    top: 150px;
+    right: 0;
+    display: inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    position: absolute;
+    width: 200px;
+    height: 100px;
+
+}
+
+.tr {
+    border-bottom: 1px solid grey;
+}
+
+.legend tr {
+    border-bottom: 1px solid grey;
+}
+
+.legend tr:first-child {
+    border-top: 1px solid grey;
+}
+
+.legend td {
+    padding: 4px 5px;
+    vertical-align: bottom;
+}
+
+.legendFreq, .legendPerc {
+    align: right;
+    width: 50px;
 }
 
 

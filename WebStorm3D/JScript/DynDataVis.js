@@ -1,9 +1,9 @@
 //动态数据表格展示
 //静态数据源--直方图示例
 //动态时由服务器提供
-//饼图的数据
-const pData = [20, 13, 17];
-var freqData = [
+//饼图的数据，初始的三种物体各自数量的总数和元数据
+const pData = [];
+const freqData = [
     {State: 'AL', freq: {low: 4786, mid: 1319, high: 249}}
     , {State: 'AZ', freq: {low: 1101, mid: 412, high: 674}}
     , {State: 'CT', freq: {low: 932, mid: 2149, high: 418}}
@@ -15,21 +15,21 @@ var freqData = [
     , {State: 'IN', freq: {low: 797, mid: 1849, high: 1534}}
     , {State: 'KS', freq: {low: 162, mid: 379, high: 471}}
 ];
-console.log(freqData);
+
 freqData.forEach(function (d) {
     d.total = d.freq.high + d.freq.low + d.freq.mid;
 });
-console.log(freqData);
+
 const pDATAArray = [];
 for (i = 0; i < freqData.length; i++) {
     pDATAArray.push(freqData[i].total);
 }
-console.log(pDATAArray);
+
 //1.绘制静态直方图图表
 const Width = 800, Height = 400;
 const TWidth = 400, THeight = 400;
 //在index.html中次脚本的引用晚于MyD3JS.js,因此可以获取到那个脚本中创建的div
-var TableCanvas = d3.select(document.body).select("div")
+const TableCanvas = d3.select(document.body).select("div")
     .append("svg").attr("id", "Table01").attr("class", "TableSVG")
     .attr("width", Width).attr("height", Height);
 
@@ -50,16 +50,16 @@ const rectStep = 35;
 //直方图宽度,即两个直方图之间的间隔为5
 const rectWidth = 30;
 //绘制坐标轴容器
-var GXAxis = TableCanvas.append('g')
+const GXAxis = TableCanvas.append('g')
     .attr("transform", "translate(" + (Table_padding) + "," + (THeight - Table_padding) + ")");
-var GYAxis = TableCanvas.append('g')
+const GYAxis = TableCanvas.append('g')
     .attr('id', 'yaxis')
     .attr("transform", "translate(" + (Table_padding) + "," + (THeight - Table_padding - yAxisWidth) + ")");
 
 //生成比例尺
 //domain()坐标刻度数量，对应后面的像素点，即0-->8px,10-->378px,刻度间距为(378-8)/10
-var xScale = d3.scaleBand().domain(pDATAArray.map((d, i) => i + 1)).range([0, xAxisWidth]).padding(0.1);
-var yScale = d3.scaleLinear().domain([0, d3.max(pDATAArray)]).rangeRound([yAxisWidth, 0]);
+const xScale = d3.scaleBand().domain(pDATAArray.map((d, i) => i + 1)).range([0, xAxisWidth]).padding(0.1);
+const yScale = d3.scaleLinear().domain([0, d3.max(pDATAArray)]).rangeRound([yAxisWidth, 0]);
 
 
 //生成坐标轴,以及改变里面元素的属性
@@ -128,19 +128,41 @@ function update_Table(newDataSource) {
 const pie = d3.pie().value(d => d);
 //获得数据源中的low数据()
 const pielow = d3.pie().value(d => d.freq.low);
-console.log(pielow(freqData).map(d => d.value));
-//获得数据源中freq的value值，返回一个多重数组
-const fre = freqData.map(d => Object.values(d.freq));
+
+//获得数据源中freq的值，返回一个多重数组
+const fre = freqData.map(d=>d.freq);
 console.log(fre);
+const fre_key = fre.map(d=>Object.keys(d));
+const fre_value = fre.map(d=>Object.values(d));
+console.log(fre_key);
+console.log(fre_value);
+
+//两种方式获得的key，value相同
+// const fre_value02 = freqData.map(d => Object.values(d.freq));
+// console.log(fre_value02);
+// const fre_key02 = freqData.map(d=>Object.keys(d.freq));
+// console.log((fre_key02));
+//
+
+const init_Data = fre_key[0].map(function(d){
+    return {type:d, freq: d3.sum(freqData.map(function(t){ return t.freq[d];}))};
+});
+
+for (i = 0; i < init_Data.length; i++) {
+    pData.push(Object.values(init_Data[i])[1]);
+}
+
+
 //然后在从多重数组里面分别取出对应的值
-const lowValue = fre.map(d => d[0]);
-const midValue = fre.map((d, i) => d[1]);
-const highValue = fre.map(d => d[2]);
+const lowValue = fre_value.map(d => d[0]);
+const midValue = fre_value.map((d, i) => d[1]);
+const highValue = fre_value.map(d => d[2]);
 
 const arcPath = d3.arc().innerRadius(0).outerRadius(100);
 //饼图颜色
 const pColor = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#ab2013", "#76ccc9", "#68cc83"]);
-
+//图表颜色
+function segColor(c){ return {low:"#98abc5", mid:"#8a89a6",high:"#7b6888"}[c]; }
 //饼图
 const pStyle = obj => {
     obj.attr('stroke', '#000')
@@ -160,10 +182,8 @@ function init_pTable(dataSource) {
 
 function updata_pTable(newdataSource) {
     const newPie = pie(newdataSource);
-    console.log(newPie);
     const allPTable = TableCanvas.selectAll("#pTableStyle").nodes();
     const newpTable = TableCanvas.selectAll("#pTableStyle").data(newPie);
-    console.log(newpTable);
     if (newPie.length <= allPTable.length) {
         pStyle(newpTable);
         newpTable.exit().remove();
@@ -177,10 +197,11 @@ function updata_pTable(newdataSource) {
 function mouseover(d,i) {
     if (this.id == 'table') {
         d3.select(this).attr('fill', 'blue');
-        //更新饼状图数据
-        const newpData = fre[i];
-        console.log(newpData);
+        //更新饼状图数据,value
+        const newpData = fre_value[i];
+       label_Update(newpData);
         updata_pTable(newpData);
+
     }
     if (this.id == 'pTableStyle'){
         if (i == 0){
@@ -204,14 +225,53 @@ function mouseout() {
         //重置所有数据
         updata_pTable(pData);
         update_Table(pDATAArray);
+        label_Update(pData);
     }
 
 }
+//创建表单
+function init_labelTable(lD){
+    const legend = d3.select(".svg-rooter").append('table').attr('class','legend');
+    // 创建每一行
+    const tr = legend.append('tbody').selectAll("tr").data(lD).enter().append("tr");
 
-//鼠标移入移出饼图时触发的事件
+    //每一行第一列
+    tr.append("td").append("svg").attr("width", 16).attr("height", 16).append("rect")
+        .attr("width", 16).attr("height", 16)
+        .attr("fill",d=>segColor(d.type));
+
+    // 第二列
+    tr.append("td").text((d,i)=>d.type);
+
+    // 第三列
+    tr.append("td").attr("class",'legendFreq')
+        .text(d=>d3.format(',')(d.freq));
+
+    // 第四列
+    tr.append("td").attr("class",'legendPerc')
+        .text(d=>getLegend(d,lD));
+}
+
+// 表更新
+function label_Update(nD){
+    // update the data attached to the row elements.
+    var l = d3.select('.svg-rooter').select("tbody").selectAll("tr").data(nD);
+
+    // update the frequencies.
+    l.select(".legendFreq").text(d=>d);
+
+    // update the percentage column.
+    l.select(".legendPerc").text(function(d){ return perc(d,nD);});
+}
+//计算各数据比例
+function getLegend(d,aD){
+    return d3.format("%")(d.freq/d3.sum(aD.map(function(v){ return v.freq; })));
+}
+function perc(d,arr){
+    return d3.format('%')(d/d3.sum(arr));
+}
+
+//初始化
 init_Table(pDATAArray);
-//update_Table(newDataArr);
 init_pTable(pData);
-
-
-
+init_labelTable(init_Data);
