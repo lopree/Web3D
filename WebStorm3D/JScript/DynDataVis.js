@@ -21,6 +21,7 @@ freqData.forEach(function (d) {
 });
 
 const pDATAArray = [];
+let i;
 for (i = 0; i < freqData.length; i++) {
     pDATAArray.push(freqData[i].total);
 }
@@ -75,11 +76,11 @@ const RectStyle = obj => {
         .attr("x", (d, i) => {
             return Table_padding + xScale(i + 1)
         })
-        .attr("y", (d, i) => {
+        .attr("y", (d) => {
             return THeight - Table_padding - (yScale(0) - yScale(d))
         })
         .attr("width", xScale.bandwidth())
-        .attr("height", (d, i) => {
+        .attr("height", (d) => {
             return yScale(0) - yScale(d)
         })
         .on('mouseover', mouseover)
@@ -90,10 +91,10 @@ const TextStyle = obj => {
         .attr("x", (d, i) => {
             return Table_padding + xScale(i + 1)
         })
-        .attr("y", (d, i) => {
+        .attr("y", (d) => {
             return THeight - Table_padding - (yScale(0) - yScale(d))
         })
-        .text((d, i) => {
+        .text((d) => {
             return d
         })
         .attr("dx", xScale.bandwidth() / 2)
@@ -128,7 +129,6 @@ function update_Table(newDataSource) {
 const pie = d3.pie().value(d => d);
 //获得数据源中的low数据()
 const pielow = d3.pie().value(d => d.freq.low);
-
 //获得数据源中freq的值，返回一个多重数组
 const fre = freqData.map(d=>d.freq);
 console.log(fre);
@@ -173,7 +173,7 @@ const pStyle = obj => {
         .attr('fill', (d, i) => pColor(i))
         .on('mouseover', mouseover)
         .on('mouseout', mouseout);
-}
+};
 
 function init_pTable(dataSource) {
     const pieData = pie(dataSource);
@@ -195,7 +195,7 @@ function updata_pTable(newdataSource) {
 
 //鼠标移入移出直方图时触发的事件
 function mouseover(d,i) {
-    if (this.id == 'table') {
+    if (this.id === 'table') {
         d3.select(this).attr('fill', 'blue');
         //更新饼状图数据,value
         const newpData = fre_value[i];
@@ -203,14 +203,14 @@ function mouseover(d,i) {
         updata_pTable(newpData);
 
     }
-    if (this.id == 'pTableStyle'){
-        if (i == 0){
+    if (this.id === 'pTableStyle'){
+        if (i === 0){
             update_Table(highValue);
             d3.selectAll('.TableRect').attr('fill',pColor(i));
-        }else if( i == 1){
+        }else if( i === 1){
             update_Table(midValue);
             d3.selectAll('.TableRect').attr('fill',pColor(i));
-        }else if(i==2){
+        }else if(i===2){
             update_Table(lowValue);
             d3.selectAll('.TableRect').attr('fill',pColor(i));
         }
@@ -218,10 +218,10 @@ function mouseover(d,i) {
 }
 
 function mouseout() {
-    if (this.id == 'table'){
+    if (this.id === 'table'){
         d3.select(this).attr('fill', 'steelblue');
     }
-    if (this.id == 'pTableStyle'){
+    if (this.id === 'pTableStyle'){
         //重置所有数据
         updata_pTable(pData);
         update_Table(pDATAArray);
@@ -255,7 +255,7 @@ function init_labelTable(lD){
 // 表更新
 function label_Update(nD){
     // update the data attached to the row elements.
-    var l = d3.select('.svg-rooter').select("tbody").selectAll("tr").data(nD);
+    const l = d3.select('.svg-rooter').select("tbody").selectAll("tr").data(nD);
 
     // update the frequencies.
     l.select(".legendFreq").text(d=>d);
