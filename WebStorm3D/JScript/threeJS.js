@@ -6,4 +6,15 @@ const  camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHei
 let render = new THREE.WebGLRenderer();
 render.setSize(window.innerWidth,window.innerHeight);
 document.appendChild(render.domElement);
+//Game Logic
+let update = function(){
 
+};
+//Draw Scene
+let renderer = function(){
+    render.render(scene,camera);
+};
+//run GameLoop(renderer,update,repeat)
+let GameLoop = function () {
+
+};
