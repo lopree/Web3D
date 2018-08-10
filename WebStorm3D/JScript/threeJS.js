@@ -1,4 +1,4 @@
-import * as THREE from "../Core/three/three";
+//import * as THREE from "../Core/three/three";
 let scene,camera,render,controls,light;
 scene = new THREE.Scene();
 scene.background = new THREE.Color( 0xa0a0a0 );
@@ -37,6 +37,29 @@ let mat = new THREE.MeshBasicMaterial({color:0xFFFFFF,wireframe:true});
 let cube = new THREE.Mesh(geo,mat);
 scene.add(cube);
 camera.position.z = 3;
+//loader
+let loader = new THREE.GLTFLoader();
+
+THREE.DRACOLoader.setDecoderPath('./draco');
+loader.setDRACOLoader( new THREE.DRACOLoader());
+
+loader.load(
+    './Resources/Models/SittingMan.gltf',
+    function (gltf) {
+        scene.add(gltf.scene);
+
+        gltf.animations; // Array<THREE.AnimationClip>
+        gltf.scene; // THREE.Scene
+        gltf.scenes; // Array<THREE.Scene>
+        gltf.cameras; // Array<THREE.Camera>
+        gltf.asset; // Object
+    },
+    function(xhr){
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function(error){
+        console.log("an error happend");
+    });
 //Game Logic
 let SceneUpdate = function(){
     cube.rotation.x+=0.01;
@@ -44,6 +67,7 @@ let SceneUpdate = function(){
 };
 //Draw Scene
 let renderer = function(){
+    //THREE.GLTFLoader.Shaders.update(scene, camera);
     render.render(scene,camera);
 };
 //run GameLoop(renderer,update,repeat)
