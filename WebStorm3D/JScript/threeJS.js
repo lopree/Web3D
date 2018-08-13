@@ -1,5 +1,7 @@
 //import * as THREE from "../Core/three/three";
 let scene,camera,render,controls,light;
+let clock = new THREE.Clock();
+let mixer;
 scene = new THREE.Scene();
 scene.background = new THREE.Color( 0xa0a0a0 );
 camera = new THREE .PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
@@ -19,18 +21,10 @@ window.addEventListener('resize',function () {
 controls = new THREE.OrbitControls(camera,render.domElement);
 controls.update();
 //Light
-light = new THREE.HemisphereLight(0xFFFFFF,0x444444);
-light.position.set( 0, 200, 0 );
+light = new THREE.HemisphereLight( 0xbbbbff, 0x444422 );
+light.position.set( 0, 1, 0 );
 scene.add( light );
 
-light = new THREE.DirectionalLight( 0xffffff );
-light.position.set( 0, 200, 100 );
-light.castShadow = true;
-light.shadow.camera.top = 180;
-light.shadow.camera.bottom = -100;
-light.shadow.camera.left = -120;
-light.shadow.camera.right = 120;
-scene.add( light );
 //Create Shape
 let geo = new THREE.BoxGeometry(1,1,1);
 let mat = new THREE.MeshBasicMaterial({color:0xFFFFFF,wireframe:true});
@@ -39,20 +33,30 @@ scene.add(cube);
 camera.position.z = 3;
 //loader
 let loader = new THREE.GLTFLoader();
-
+//设置GLTF模型的解压缩文件，实例化
 THREE.DRACOLoader.setDecoderPath('./draco');
 loader.setDRACOLoader( new THREE.DRACOLoader());
 
 loader.load(
-    './Resources/Models/SittingMan.gltf',
+    //模型地址
+    './Resources/Models/Arm.gltf',
     function (gltf) {
-        scene.add(gltf.scene);
+        let model = gltf.scene;
+        scene.add(model);
+        //获取动作
+        mixer = new THREE.AnimationMixer(model);
+        mixer.clipAction(gltf.animations[0]).play();
 
-        gltf.animations; // Array<THREE.AnimationClip>
-        gltf.scene; // THREE.Scene
-        gltf.scenes; // Array<THREE.Scene>
-        gltf.cameras; // Array<THREE.Camera>
-        gltf.asset; // Object
+        // cycle over materials
+        model.traverse(child => {
+                if (child.material) {
+                    child.material.needsUpdate = true;
+                    child.material.flatShading = false;
+                }
+
+        });
+
+        renderer();
     },
     function(xhr){
         console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
@@ -67,14 +71,21 @@ let SceneUpdate = function(){
 };
 //Draw Scene
 let renderer = function(){
+    let delta = clock.getDelta();
+    if (mixer != null) {
+        mixer.update(delta);
+    }
     //THREE.GLTFLoader.Shaders.update(scene, camera);
+    render.gammaFactor = 2.2;
+
+
     render.render(scene,camera);
 };
+render.gammaOutput = true;
 //run GameLoop(renderer,update,repeat)
 let GameLoop = function () {
     SceneUpdate();
     renderer();
-
     requestAnimationFrame(GameLoop);
 };
 
