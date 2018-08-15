@@ -14,6 +14,15 @@ function init(){
     scene.background = new THREE.Color( 0xFFFFFF );
     camera = new THREE .PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
     camera.position.z = 3;
+    // envmap
+    let path = './Resources/cube/Bridge2/';
+    let format = '.jpg';
+    let envMap = new THREE.CubeTextureLoader().load( [
+        path + 'posx' + format, path + 'negx' + format,
+        path + 'posy' + format, path + 'negy' + format,
+        path + 'posz' + format, path + 'negz' + format
+    ] );
+
     //Light
     light = new THREE.HemisphereLight( 0xbbbbff, 0x444422 );
     light.position.set( 0, 1, 0 );
@@ -34,7 +43,7 @@ function init(){
         }
     );
     let loader = new THREE.GLTFLoader();
-    //设置GLTF模型的解压缩文件，实例化
+    //设置GLTF模型的解压缩文件存放地址
     THREE.DRACOLoader.setDecoderPath('./draco');
     loader.setDRACOLoader( new THREE.DRACOLoader());
     loader.load(
@@ -49,6 +58,7 @@ function init(){
             model.traverse(child => {
                 //材质赋予
                 if (child.material) {
+                    console.log(child.material);
                     child.material.needsUpdate = true;
                     child.material.flatShading = false;
                 }
@@ -62,6 +72,7 @@ function init(){
             console.log("an error happend");
         });
     render.setSize(window.innerWidth,window.innerHeight);
+    render.gammaFactor = 2.2;
     render.gammaOutput = true;
     //模型分辨率设置，启用后自适应设备的分辨率
     render.setPixelRatio( window.devicePixelRatio );
@@ -88,7 +99,7 @@ function renderer(){
         mixer.update(delta);
     }
     //THREE.GLTFLoader.Shaders.update(scene, camera);
-    render.gammaFactor = 2.2;
+
     render.render(scene,camera);
 }
 //run GameLoop(renderer,update,repeat)
