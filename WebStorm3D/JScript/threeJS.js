@@ -22,7 +22,6 @@ function init(){
         path + 'posy' + format, path + 'negy' + format,
         path + 'posz' + format, path + 'negz' + format
     ] );
-
     //Light
     light = new THREE.HemisphereLight( 0xbbbbff, 0x444422 );
     light.position.set( 0, 1, 0 );
@@ -58,7 +57,6 @@ function init(){
             model.traverse(child => {
                 //材质赋予
                 if (child.material) {
-                    console.log(child.material);
                     child.material.needsUpdate = true;
                     child.material.flatShading = false;
                 }
@@ -67,11 +65,9 @@ function init(){
         },
         function(xhr){
             console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-        },
-        function(error){
-            console.log("an error happend");
         });
     render.setSize(window.innerWidth,window.innerHeight);
+    //Gamma 设置
     render.gammaFactor = 2.2;
     render.gammaOutput = true;
     //模型分辨率设置，启用后自适应设备的分辨率
