@@ -1,6 +1,7 @@
 //import * as THREE from "../Core/three/three";
-let container,stats,cube;
+let container,cube;
 let scene,camera,render,controls,light;
+let raycast,mouse;
 let clock = new THREE.Clock();
 let mixer;
 
@@ -15,13 +16,13 @@ function init(){
     camera = new THREE .PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
     camera.position.z = 3;
     // envmap
-    let path = './Resources/cube/Bridge2/';
-    let format = '.jpg';
-    let envMap = new THREE.CubeTextureLoader().load( [
-        path + 'posx' + format, path + 'negx' + format,
-        path + 'posy' + format, path + 'negy' + format,
-        path + 'posz' + format, path + 'negz' + format
-    ] );
+    // let path = './Resources/cube/Bridge2/';
+    // let format = '.jpg';
+    // let envMap = new THREE.CubeTextureLoader().load( [
+    //     path + 'posx' + format, path + 'negx' + format,
+    //     path + 'posy' + format, path + 'negy' + format,
+    //     path + 'posz' + format, path + 'negz' + format
+    // ] );
     //Light
     light = new THREE.HemisphereLight( 0xbbbbff, 0x444422 );
     light.position.set( 0, 1, 0 );
@@ -75,6 +76,27 @@ function init(){
     container.appendChild(render.domElement);
     //窗口的自适应
     window.addEventListener( 'resize', onWindowResize, false );
+    //添加光投射器 及 鼠标二维向量 用于捕获鼠标移入物体
+    //下次渲染时，通过mouse对于的二维向量判断是否经过指定物体
+    raycast = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
+    document.addEventListener('mousedown',mouseDown,false)
+}
+
+function mouseDown(event){
+    event.preventDefault();
+    //转换坐标
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    raycast.setFromCamera( mouse, camera );
+    let intersects = raycast.intersectObjects( scene.children );
+    if (intersects.length>0){
+        let intersect = intersects[0];
+        if (event.button===0) {
+            showSVG();
+        }
+        renderer();
+    }
 
 }
 function onWindowResize() {
@@ -95,7 +117,6 @@ function renderer(){
         mixer.update(delta);
     }
     //THREE.GLTFLoader.Shaders.update(scene, camera);
-
     render.render(scene,camera);
 }
 //run GameLoop(renderer,update,repeat)
@@ -103,5 +124,11 @@ function GameLoop() {
     CubeAnimation();
     renderer();
     requestAnimationFrame(GameLoop);
+}
+function showSVG() {
+    console.log(1);
+    const deskTop = document.getElementsByClassName('svg-rooter');
+    console.log(deskTop.style);
+    deskTop.style.display = "block";
 }
 

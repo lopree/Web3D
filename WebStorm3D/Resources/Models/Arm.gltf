@@ -2200,12 +2200,12 @@
     ],
     "images" : [
         {
-            "name" : "\u673a\u68b0\u81c2",
-            "uri" : "\u673a\u68b0\u81c2.jpg"
-        },
-        {
             "name" : "Arm02",
             "uri" : "Arm02.jpg"
+        },
+        {
+            "name" : "AutoarmCom",
+            "uri" : "AutoarmCom.jpg"
         }
     ],
     "materials" : [
@@ -2228,23 +2228,19 @@
             "name" : "M#03",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 1
+                    "index" : 0
                 },
                 "metallicFactor" : 0.0
             }
         },
         {
-            "extensions" : {
-                "KHR_materials_pbrSpecularGlossiness" : {
-                    "diffuseFactor" : [
-                        1.0,
-                        0.15107223391532898,
-                        0.1124274730682373,
-                        1.0
-                    ]
-                }
-            },
-            "name" : "\u6750\u8d28.001"
+            "name" : "M#04",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 2
+                },
+                "metallicFactor" : 0.0
+            }
         }
     ],
     "meshes" : [
@@ -2299,7 +2295,8 @@
                         "NORMAL" : 15,
                         "POSITION" : 14
                     },
-                    "indices" : 13
+                    "indices" : 13,
+                    "material" : 1
                 }
             ]
         },
@@ -2370,7 +2367,7 @@
                         "POSITION" : 35
                     },
                     "indices" : 34,
-                    "material" : 1
+                    "material" : 0
                 }
             ]
         },
@@ -2399,7 +2396,8 @@
                         "TANGENT" : 45,
                         "TEXCOORD_0" : 46
                     },
-                    "indices" : 42
+                    "indices" : 42,
+                    "material" : 2
                 }
             ]
         },
@@ -2443,7 +2441,8 @@
                         "TANGENT" : 60,
                         "TEXCOORD_0" : 61
                     },
-                    "indices" : 57
+                    "indices" : 57,
+                    "material" : 2
                 }
             ]
         },
@@ -2457,7 +2456,8 @@
                         "TANGENT" : 65,
                         "TEXCOORD_0" : 66
                     },
-                    "indices" : 62
+                    "indices" : 62,
+                    "material" : 2
                 }
             ]
         },
@@ -2557,7 +2557,7 @@
                         "TEXCOORD_0" : 97
                     },
                     "indices" : 93,
-                    "material" : 2
+                    "material" : 1
                 }
             ]
         }
@@ -3091,6 +3091,10 @@
         }
     ],
     "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
         {
             "sampler" : 0,
             "source" : 0
