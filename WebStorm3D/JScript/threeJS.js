@@ -82,7 +82,7 @@ function init(){
     mouse = new THREE.Vector2();
     document.addEventListener('mousedown',mouseDown,false)
 }
-
+//鼠标点击事件
 function mouseDown(event){
     event.preventDefault();
     //转换坐标
@@ -97,8 +97,8 @@ function mouseDown(event){
         }
         renderer();
     }
-
 }
+//窗口自适应
 function onWindowResize() {
     camera.aspect= window.innerWidth/window.innerHeight;
     //防止物体由于窗口的变换而形变
@@ -125,10 +125,13 @@ function GameLoop() {
     renderer();
     requestAnimationFrame(GameLoop);
 }
+//展示对应SVG,
 function showSVG() {
-    console.log(1);
+    //原生查找并修改CSS中style的方法
     const deskTop = document.getElementsByClassName('svg-rooter');
-    console.log(deskTop.style);
-    deskTop.style.display = "block";
+    deskTop[0].style.display='block';
+    //通过D3方法修改style
+    // const deskTop = d3.select('.svg-rooter');
+    // deskTop.style('display','block');
 }
 

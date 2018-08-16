@@ -20,7 +20,7 @@ text {
 }
 
 .svg-rooter {
-    display: block;
+    display: none;
     top: 0;
     left: 0;
     height: 100%;
@@ -29,6 +29,7 @@ text {
 }
 
 .svg-main {
+    display: none;
     top: 10%;
     left: 5%;
     border: 2px solid #ccc;
