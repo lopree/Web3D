@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e111f03f-63ac-4dc0-b5c1-d8fc1bf4a694" name="Default" comment="compare fbx and gltf load Speed">
+      <change beforePath="$PROJECT_DIR$/WebStorm3D/JScript/threeJS.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebStorm3D/JScript/threeJS.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1787133391">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="15" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.4" value="7" />
+          <entry key="project.open.time.5" value="6" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="17" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="126" />
+          <entry key="gltf" value="1" />
+          <entry key="html" value="181" />
+          <entry key="js" value="3237" />
+          <entry key="txt" value="116" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="126" />
+          <entry key="HTML" value="181" />
+          <entry key="JavaScript" value="3237" />
+          <entry key="PLAIN_TEXT" value="117" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="gltf" value="6" />
+          <entry key="js" value="5" />
+          <entry key="md" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JavaScript" value="5" />
+          <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="6" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="MyWeb3D" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebStorm3D/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/threeJS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="125" column="66" selection-start-line="125" selection-start-column="66" selection-end-line="125" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/MyThree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="7" column="21" selection-start-column="3" selection-end-line="122" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/MyD3JS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" selection-start-column="8" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebStorm3D/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/DynDataVis.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1170">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="package.json" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>material</find>
+      <find>imag</find>
+      <find>image</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/WebStorm3D/JScript/threeJS.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/Asyc_Await.js" />
+        <option value="$PROJECT_DIR$/WebStorm3D/text.html" />
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/Async_Await.js" />
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/D3JS.js" />
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/DynDataVis.js" />
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/MyD3JS.js" />
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/MyThree.js" />
+        <option value="$PROJECT_DIR$/WebStorm3D/Resources/Models/Arm.gltf" />
+        <option value="$PROJECT_DIR$/WebStorm3D/index.css" />
+        <option value="$PROJECT_DIR$/WebStorm3D/index.html" />
+        <option value="$PROJECT_DIR$/WebStorm3D/JScript/threeJS.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="801" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MyWeb3D" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyWeb3D" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyWeb3D" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyWeb3D" type="462c0819:PsiDirectoryNode" />
+              <item name="WebStorm3D" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.4.0" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.chrisrm.idea.config" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyWeb3D/WebStorm3D/index.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="text.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyWeb3D/WebStorm3D/text.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="Async_Await.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="Async_Await.js" working-dir="$PROJECT_DIR$/WebStorm3D/JScript">
+      <method v="2" />
+    </configuration>
+    <configuration name="MyD3JS.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="MyD3JS.js" working-dir="$PROJECT_DIR$/WebStorm3D/JScript">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="JavaScript Debug.text.html" />
+      <item itemvalue="Node.js.MyD3JS.js" />
+      <item itemvalue="Node.js.Async_Await.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.text.html" />
+        <item itemvalue="Node.js.Async_Await.js" />
+        <item itemvalue="Node.js.MyD3JS.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e111f03f-63ac-4dc0-b5c1-d8fc1bf4a694" name="Default" comment="" />
+      <created>1531364143187</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1531364143187</updated>
+      <workItem from="1531364145599" duration="11975000" />
+      <workItem from="1531703142420" duration="3939000" />
+      <workItem from="1531788942392" duration="178000" />
+      <workItem from="1531875773865" duration="9714000" />
+      <workItem from="1531961685998" duration="2691000" />
+      <workItem from="1532048915361" duration="6358000" />
+      <workItem from="1532306869113" duration="17721000" />
+      <workItem from="1532401395496" duration="3846000" />
+      <workItem from="1532480589028" duration="16132000" />
+      <workItem from="1532511779090" duration="20000" />
+      <workItem from="1532566434029" duration="16022000" />
+      <workItem from="1532652330839" duration="3025000" />
+      <workItem from="1532913506723" duration="2085000" />
+      <workItem from="1533083696545" duration="901000" />
+      <workItem from="1533170807172" duration="2236000" />
+      <workItem from="1533187381297" duration="125000" />
+      <workItem from="1533187583377" duration="122000" />
+      <workItem from="1533187752757" duration="1702000" />
+      <workItem from="1533189629320" duration="2560000" />
+      <workItem from="1533258951899" duration="179000" />
+      <workItem from="1533517055191" duration="602000" />
+      <workItem from="1533705929613" duration="245000" />
+      <workItem from="1533706206239" duration="4013000" />
+      <workItem from="1533776480941" duration="6470000" />
+      <workItem from="1533861990857" duration="21016000" />
+      <workItem from="1534207820025" duration="13825000" />
+      <workItem from="1534294343809" duration="486000" />
+      <workItem from="1534295782231" duration="11445000" />
+      <workItem from="1534381044082" duration="11270000" />
+      <workItem from="1534468443600" duration="1791000" />
+      <workItem from="1534726525207" duration="2480000" />
+      <workItem from="1534820141940" duration="7736000" />
+      <workItem from="1534831452946" duration="615000" />
+    </task>
+    <task id="LOCAL-00001" summary="12">
+      <created>1531388484716</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531388484716</updated>
+    </task>
+    <task id="LOCAL-00002" summary="异步">
+      <created>1531704528085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531704528086</updated>
+    </task>
+    <task id="LOCAL-00003" summary="异步text">
+      <created>1531704628645</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1531704628645</updated>
+    </task>
+    <task id="LOCAL-00004" summary="async/await">
+      <created>1531906658494</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1531906658495</updated>
+    </task>
+    <task id="LOCAL-00005" summary="async/await">
+      <created>1531993083564</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1531993083564</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Axis">
+      <created>1532079486511</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1532079486511</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Axis">
+      <created>1532079509389</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1532079509389</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Axis">
+      <created>1532307155031</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1532307155032</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Axis">
+      <created>1532313202283</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1532313202283</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Axis">
+      <created>1532333715071</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1532333715071</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Axis">
+      <created>1532338870050</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1532338870050</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Axis">
+      <created>1532425260007</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1532425260007</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update">
+      <created>1532511609031</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1532511609031</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update">
+      <created>1532595015423</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1532595015423</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update">
+      <created>1533192159633</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1533192159633</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ThreeScene">
+      <created>1533720697708</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1533720697709</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Three">
+      <created>1533721012996</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1533721012996</updated>
+    </task>
+    <task id="LOCAL-00018" summary="all Three.js">
+      <created>1533799727650</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1533799727650</updated>
+    </task>
+    <task id="LOCAL-00019" summary="all Three.js">
+      <created>1533802528599</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1533802528599</updated>
+    </task>
+    <task id="LOCAL-00020" summary="all Three.js">
+      <created>1533803213240</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1533803213240</updated>
+    </task>
+    <task id="LOCAL-00021" summary="all Three.js">
+      <created>1533807305883</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1533807305883</updated>
+    </task>
+    <task id="LOCAL-00022" summary="all Three.js">
+      <created>1533883061868</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1533883061868</updated>
+    </task>
+    <task id="LOCAL-00023" summary="all Three.js">
+      <created>1533893553174</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1533893553174</updated>
+    </task>
+    <task id="LOCAL-00024" summary="all Three.js">
+      <created>1533894059066</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1533894059066</updated>
+    </task>
+    <task id="LOCAL-00025" summary="glTF">
+      <created>1534150541067</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1534150541067</updated>
+    </task>
+    <task id="LOCAL-00026" summary="glTF代码整理">
+      <created>1534215806090</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1534215806090</updated>
+    </task>
+    <task id="LOCAL-00027" summary="glTF代码整理">
+      <created>1534301800430</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1534301800430</updated>
+    </task>
+    <task id="LOCAL-00028" summary="glTF">
+      <created>1534323692789</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1534323692789</updated>
+    </task>
+    <task id="LOCAL-00029" summary="show/hide another svg">
+      <created>1534405157235</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1534405157235</updated>
+    </task>
+    <task id="LOCAL-00030" summary="compare fbx and gltf load Speed">
+      <created>1534830122942</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1534830122942</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="183525000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="801" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992785" visible="true" weight="0.23467231" />
+      <window_info id="Structure" order="1" sideWeight="0.5007215" side_tool="true" weight="0.15785764" />
+      <window_info id="Favorites" order="2" sideWeight="0.5007215" side_tool="true" weight="0.15785764" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32911393" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3982684" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32756132" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32756132" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="12" />
+    <MESSAGE value="异步" />
+    <MESSAGE value="异步text" />
+    <MESSAGE value="async/await" />
+    <MESSAGE value="Axis" />
+    <MESSAGE value="Update" />
+    <MESSAGE value="ThreeScene" />
+    <MESSAGE value="Three" />
+    <MESSAGE value="all Three.js" />
+    <MESSAGE value="glTF代码整理" />
+    <MESSAGE value="glTF" />
+    <MESSAGE value="show/hide another svg" />
+    <MESSAGE value="compare fbx and gltf load Speed" />
+    <option name="LAST_COMMIT_MESSAGE" value="compare fbx and gltf load Speed" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="MyWeb3D" type="b2602c69:ProjectViewProjectNode" />
+        <item name="MyWeb3D" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/Core/d3/API.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-390" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/Core/d3/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/Resources/Models/Arm.gltf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6305">
+          <caret line="2444" column="28" selection-start-line="2444" selection-start-column="28" selection-end-line="2444" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/Resources/Models/arm0821.gltf" />
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/MyThree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="21" selection-start-column="3" selection-end-line="122" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/MyD3JS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/DynDataVis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebStorm3D/JScript/threeJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="125" column="66" selection-start-line="125" selection-start-column="66" selection-end-line="125" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
