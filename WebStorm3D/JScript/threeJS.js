@@ -15,14 +15,6 @@ function init(){
     scene.background = new THREE.Color( 0xFFFFFF );
     camera = new THREE .PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
     camera.position.z = 3;
-    // envmap
-    // let path = './Resources/cube/Bridge2/';
-    // let format = '.jpg';
-    // let envMap = new THREE.CubeTextureLoader().load( [
-    //     path + 'posx' + format, path + 'negx' + format,
-    //     path + 'posy' + format, path + 'negy' + format,
-    //     path + 'posz' + format, path + 'negz' + format
-    // ] );
     //Light
     light = new THREE.HemisphereLight( 0xbbbbff, 0x444422 );
     light.position.set( 0, 1, 0 );
@@ -46,14 +38,16 @@ function init(){
     //设置GLTF模型的解压缩文件存放地址
     THREE.DRACOLoader.setDecoderPath('./draco');
     loader.setDRACOLoader( new THREE.DRACOLoader());
+    let clock = new THREE.Clock();
+    let a = clock.getDelta();
     loader.load(
         //模型地址
-        './Resources/Models/Arm.gltf',
-        function (gltf) {
-            let model = gltf.scene;
+        ' ./Resources/Models/cy-001.gltf',
+        function (OBJ) {
+            let model = OBJ.scene;
             //获取动作
-            mixer = new THREE.AnimationMixer(model);
-            mixer.clipAction(gltf.animations[0]).play();
+            // mixer = new THREE.AnimationMixer(model);
+            // mixer.clipAction(gltf.animations[0]).play();
             // cycle over materials
             model.traverse(child => {
                 //材质赋予
@@ -63,6 +57,7 @@ function init(){
                 }
             });
             scene.add(model);
+            console.log(clock.getDelta());
         },
         function(xhr){
             console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
