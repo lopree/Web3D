@@ -15,14 +15,6 @@ function init(){
     scene.background = new THREE.Color( 0xFFFFFF );
     camera = new THREE .PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
     camera.position.z = 3;
-    // envmap
-    // let path = './Resources/cube/Bridge2/';
-    // let format = '.jpg';
-    // let envMap = new THREE.CubeTextureLoader().load( [
-    //     path + 'posx' + format, path + 'negx' + format,
-    //     path + 'posy' + format, path + 'negy' + format,
-    //     path + 'posz' + format, path + 'negz' + format
-    // ] );
     //Light
     light = new THREE.HemisphereLight( 0xbbbbff, 0x444422 );
     light.position.set( 0, 1, 0 );
@@ -46,15 +38,16 @@ function init(){
     //设置GLTF模型的解压缩文件存放地址
     THREE.DRACOLoader.setDecoderPath('./draco');
     loader.setDRACOLoader( new THREE.DRACOLoader());
+    let clock = new THREE.Clock();
     loader.load(
         //模型地址
-        './Resources/Models/Arm.gltf',
-        function (gltf) {
-            let model = gltf.scene;
+        './Resources/Models/ExampleModel.gltf',
+        function (OBJ) {
+            let model = OBJ.scene;
             //获取动作
             mixer = new THREE.AnimationMixer(model);
-            mixer.clipAction(gltf.animations[0]).play();
-            // cycle over materials
+            mixer.clipAction(OBJ.animations[0]).play();
+            //cycle over materials
             model.traverse(child => {
                 //材质赋予
                 if (child.material) {
@@ -63,6 +56,7 @@ function init(){
                 }
             });
             scene.add(model);
+            console.log(clock.getDelta());
         },
         function(xhr){
             console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
@@ -82,7 +76,7 @@ function init(){
     mouse = new THREE.Vector2();
     document.addEventListener('mousedown',mouseDown,false)
 }
-
+//鼠标点击事件
 function mouseDown(event){
     event.preventDefault();
     //转换坐标
@@ -97,8 +91,8 @@ function mouseDown(event){
         }
         renderer();
     }
-
 }
+//窗口自适应
 function onWindowResize() {
     camera.aspect= window.innerWidth/window.innerHeight;
     //防止物体由于窗口的变换而形变
@@ -125,10 +119,12 @@ function GameLoop() {
     renderer();
     requestAnimationFrame(GameLoop);
 }
+//展示对应SVG,
 function showSVG() {
-    console.log(1);
+    //原生查找并修改CSS中style的方法
     const deskTop = document.getElementsByClassName('svg-rooter');
-    console.log(deskTop.style);
-    deskTop.style.display = "block";
+    deskTop[0].style.display='block';
+    //通过D3方法修改style
+    // const deskTop = d3.select('.svg-rooter');
+    // deskTop.style('display','block');
 }
-
