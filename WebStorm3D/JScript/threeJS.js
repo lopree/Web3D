@@ -45,9 +45,9 @@ function init(){
         function (OBJ) {
             let model = OBJ.scene;
             //获取动作
-            // mixer = new THREE.AnimationMixer(model);
-            // mixer.clipAction(gltf.animations[0]).play();
-            // cycle over materials
+            mixer = new THREE.AnimationMixer(model);
+            mixer.clipAction(OBJ.animations[0]).play();
+            //cycle over materials
             model.traverse(child => {
                 //材质赋予
                 if (child.material) {
