@@ -42,7 +42,8 @@ function init(){
     let a = clock.getDelta();
     loader.load(
         //模型地址
-        ' ./Resources/Models/cy-001.gltf',
+        //'http://115.28.5.204:8899/Upload/SanD/2018-08-24/8EA31D0B-E4E2-4E34-B86A-16237631C1E5.gltf',
+        './Resources/Models/SittingMan.gltf',
         function (OBJ) {
             let model = OBJ.scene;
             //获取动作
