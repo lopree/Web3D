@@ -39,11 +39,9 @@ function init(){
     THREE.DRACOLoader.setDecoderPath('./draco');
     loader.setDRACOLoader( new THREE.DRACOLoader());
     let clock = new THREE.Clock();
-    let a = clock.getDelta();
     loader.load(
         //模型地址
-        //'http://115.28.5.204:8899/Upload/SanD/2018-08-24/8EA31D0B-E4E2-4E34-B86A-16237631C1E5.gltf',
-        './Resources/Models/SittingMan.gltf',
+        './Resources/Models/ExampleModel.gltf',
         function (OBJ) {
             let model = OBJ.scene;
             //获取动作
