@@ -9,19 +9,35 @@ init();
 GameLoop();
 
 function init() {
-    //scene and camera
+    //scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xFFFFFF);
-
-    //Light
-    light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
-    light.position.set(0, 1, 0);
+    scene.background = new THREE.Color(0xa0a0a0);
+    scene.fog = new THREE.Fog(0xa0a0a0, 200, 1000);
+    //light
+    light = new THREE.HemisphereLight(0xffffff, 0x444444);
+    light.position.set(0, 200, 0);
     scene.add(light);
-    //Create Shape
-    let geo = new THREE.BoxGeometry(1, 1, 1);
-    let mat = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
-    cube = new THREE.Mesh(geo, mat);
-    scene.add(cube);
+    //DirectionalLight
+    light = new THREE.DirectionalLight(0xffffff);
+    light.position.set(0, 200, 100);
+    light.castShadow = true;
+    light.shadow.camera.top = 180;
+    light.shadow.camera.bottom = -100;
+    light.shadow.camera.left = -120;
+    light.shadow.camera.right = 120;
+    scene.add(light);
+    // ground
+    let mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000), new THREE.MeshPhongMaterial({
+        color: 0x999999,
+        depthWrite: false
+    }));
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.receiveShadow = true;
+    scene.add(mesh);
+    let grid = new THREE.GridHelper(2000, 20, 0x000000, 0x000000);
+    grid.material.opacity = 0.2;
+    grid.material.transparent = true;
+    scene.add(grid);
     //render and loader
     renderer = new THREE.WebGLRenderer(
         {
@@ -64,8 +80,8 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     document.body.appendChild(renderer.domElement);
     //camera
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 3;
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+    camera.position.set(1, 5, 8);
     //OrbitControls(camera)，控制镜头
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -75,7 +91,7 @@ function init() {
     //下次渲染时，通过mouse对于的二维向量判断是否经过指定物体
     raycast = new THREE.Raycaster();
     mouse = new THREE.Vector2();
-    renderer.domElement.addEventListener('mousedown', mouseDown, false)
+    //renderer.domElement.addEventListener('mousedown', mouseDown, false)
 }
 
 //鼠标点击事件
@@ -103,11 +119,6 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-//Game Logic
-function CubeAnimation() {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-}
 
 //Draw Scene
 function render() {
@@ -121,7 +132,6 @@ function render() {
 
 //run GameLoop(renderer,update,repeat)
 function GameLoop() {
-    CubeAnimation();
     requestAnimationFrame(GameLoop);
     controls.update();
     render();
