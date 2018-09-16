@@ -6,6 +6,11 @@
     <title>D3.js</title>
 </head>
 <body>
+    <form id="gui"> Scale
+        <label>
+            <input type="text" onkeyup="this.value=this.value.replace(/[^a-z0-9_]/g,'');">
+        </label>
+    </form>
 <script src="./Core/d3/d3.js"></script>
 
 <script src="./Core/three/three.js"></script>
@@ -20,5 +25,6 @@
 <script src="JScript/threeJS.js"></script>
 <script src="JScript/MyD3JS.js"></script>
 <script src="JScript/DynDataVis.js"></script>
+
 </body>
 </html>
