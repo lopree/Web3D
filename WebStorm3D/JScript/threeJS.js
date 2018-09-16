@@ -1,5 +1,4 @@
 //import * as THREE from "../Core/three/three";
-let container, cube;
 let scene, camera, renderer, controls, light;
 let raycast, mouse;
 let clock = new THREE.Clock();
@@ -11,7 +10,7 @@ GameLoop();
 function init() {
     //scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xa0a0a0);
+    scene.background = new THREE.Color(0xa0a0a0)//;
     scene.fog = new THREE.Fog(0xa0a0a0, 200, 1000);
     //light
     light = new THREE.HemisphereLight(0xffffff, 0x444444);
@@ -62,10 +61,10 @@ function init() {
             model.traverse(child => {
                 //材质赋予
                 if (child.material) {
-                    child.material.needsUpdate = true;
-                    child.material.flatShading = false;
-                }
-            });
+                child.material.needsUpdate = true;
+                child.material.flatShading = false;
+            }
+        });
             scene.add(model);
             console.log(clock.getDelta());
         },
